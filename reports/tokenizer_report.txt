@@ -1,0 +1,34 @@
+Tokenizer Analysis Report
+========================
+Model: google/flan-t5-small
+Cleaned dataset: F:\coding\projects\correctly\datasets\processed\train_clean_cleaned.csv
+
+Input Token Statistics
+----------------------
+Average input token length: 26.78
+Median input token length: 24.00
+Maximum input token length: 249
+Minimum input token length: 5
+Input lengths exceeding 64 tokens: 2.13%
+Input lengths exceeding 128 tokens: 0.13%
+Input lengths exceeding 256 tokens: 0.00%
+Input lengths exceeding 512 tokens: 0.00%
+
+Target Token Statistics
+-----------------------
+Average target token length: 24.17
+Median target token length: 21.00
+Maximum target token length: 272
+Minimum target token length: 2
+Target lengths exceeding 64 tokens: 1.90%
+Target lengths exceeding 128 tokens: 0.16%
+Target lengths exceeding 256 tokens: 0.01%
+Target lengths exceeding 512 tokens: 0.00%
+
+Recommendation
+--------------
+Recommended max_input_length: 64
+Recommendation basis: 95th percentile rounded up to the nearest 8 tokens, capped at 512.
+
+Report file: F:\coding\projects\correctly\reports\tokenizer_report.txt
+Histogram file: F:\coding\projects\correctly\reports\token_length_histogram.png

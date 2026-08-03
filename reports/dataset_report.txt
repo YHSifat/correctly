@@ -1,0 +1,52 @@
+Dataset Report
+==============
+Input file: F:\coding\projects\correctly\datasets\raw\train_clean.csv
+Rows: 34308
+Duplicate rows: 808
+Duplicate sentence pairs: 808
+Missing values: 4
+Missing source values: 0
+Missing target values: 4
+Empty strings: source=0, target=4
+Unchanged pairs: 331
+Changed pairs: 33977
+
+Sentence Length Statistics
+--------------------------
+Source words - avg: 16.48, median: 15.00, min: 0, max: 205
+Target words - avg: 16.92, median: 15.00, min: 0, max: 213
+Combined words - avg: 16.70, median: 15.00, min: 0, max: 213
+Source characters - avg: 91.17, median: 80.00, min: 1, max: 1094
+Target characters - avg: 94.56, median: 83.00, min: 0, max: 1151
+Combined characters - avg: 92.87, median: 81.00, min: 0, max: 1151
+
+Vocabulary Size
+---------------
+Source vocabulary: 20774
+Target vocabulary: 17943
+Combined vocabulary: 21488
+
+Top Edit Statistics
+-------------------
+in -> on: 325
+the -> a: 295
+in -> at: 244
+on -> in: 235
+for -> to: 222
+to -> for: 214
+is -> are: 200
+are -> is: 183
+a -> the: 172
+of -> in: 148
+can -> could: 143
+is -> was: 138
+will -> would: 137
+at -> in: 116
+in -> of: 98
+have -> has: 98
+would -> will: 98
+life -> lives: 94
+in -> to: 90
+to -> of: 86
+
+Top replacements shown: 20
