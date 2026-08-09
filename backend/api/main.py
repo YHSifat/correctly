@@ -12,7 +12,7 @@ app = FastAPI(
 )
 
 
-MODEL_PATH = Path("models/flan_t5_small_gec")
+MODEL_PATH = Path("model/saved_trained_models/flan_t5_small_gec")
 
 grammar_model = GrammarCorrectionModel(
     MODEL_PATH
