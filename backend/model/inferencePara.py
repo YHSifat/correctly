@@ -99,7 +99,4 @@ class ParaphrasingModel:
             for output in outputs
         ]
 
-        if num_return_sequences == 1:
-            return results[0]
-
         return results

@@ -17,3 +17,19 @@ class ParaphraseRequest(BaseModel):
 
 class ParaphraseResponse(BaseModel):
     paraphrased: list[str]
+
+class CompareRequest(BaseModel):
+    original: str
+    corrected: str
+
+class CompareResponse(BaseModel):
+    differences: list[dict]
+
+
+class AnalyzeRequest(BaseModel):
+    text: str
+
+class AnalyzeResponse(BaseModel):
+    original: str
+    corrected: str
+    differences: list[dict]

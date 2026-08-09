@@ -3,8 +3,9 @@ from pathlib import Path
 from fastapi import FastAPI
 
 from model.inference import GrammarCorrectionModel
-from api.schemas import CorrectionRequest, CorrectionResponse, ParaphraseRequest, ParaphraseResponse
+from api.schemas import AnalyzeRequest, AnalyzeResponse, AnalyzeResponse, CompareRequest, CompareResponse, CorrectionRequest, CorrectionResponse, ParaphraseRequest, ParaphraseResponse
 from model.inferencePara import ParaphrasingModel
+from diff_lookup_engine.diffEngine import compare_texts
 
 app = FastAPI(
     title="Correctly API",
@@ -33,8 +34,8 @@ def health():
     return {"status": "ok"}
 
 
-@app.post("/analyze", response_model=CorrectionResponse)
-def analyze(request: CorrectionRequest):
+@app.post("/correction", response_model=CorrectionResponse)
+def correction(request: CorrectionRequest):
     corrected = grammar_model.correct(request.text)
 
     return CorrectionResponse(
@@ -59,4 +60,19 @@ def paraphrase(request: ParaphraseRequest):
     )
 
 
+@app.post("/compare", response_model=CompareResponse)
+def compare(request: CompareRequest):
+    differences = compare_texts(request.original, request.corrected)
+    return CompareResponse(differences=differences)
 
+
+@app.post("/analyze", response_model=AnalyzeResponse)
+def analyze(request: AnalyzeRequest):
+    corrected = grammar_model.correct(request.text)
+    differences = compare_texts(request.text, corrected)
+
+    return AnalyzeResponse(
+        original=request.text,
+        corrected=corrected,
+        differences=differences,
+    )
