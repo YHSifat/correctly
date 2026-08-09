@@ -24,8 +24,8 @@ def health():
     return {"status": "ok"}
 
 
-@app.post("/correct", response_model=CorrectionResponse)
-def correct(request: CorrectionRequest):
+@app.post("/analyze", response_model=CorrectionResponse)
+def analyze(request: CorrectionRequest):
     corrected = grammar_model.correct(request.text)
 
     return CorrectionResponse(
