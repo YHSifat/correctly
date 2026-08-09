@@ -5,6 +5,7 @@ from fastapi import FastAPI
 from model.inference import GrammarCorrectionModel
 from api.schemas import AnalyzeRequest, AnalyzeResponse, AnalyzeResponse, CompareRequest, CompareResponse, CorrectionRequest, CorrectionResponse, ParaphraseRequest, ParaphraseResponse
 from model.inferencePara import ParaphrasingModel
+from grammar_rule_engine.grammar_lookup import GrammarLookup
 from diff_lookup_engine.diffEngine import compare_texts
 
 app = FastAPI(
@@ -12,6 +13,7 @@ app = FastAPI(
     version="0.1.0",
 )
 
+grammar_lookup = GrammarLookup()
 
 CORRECTION_MODEL_PATH = Path("model/saved_trained_models/flan_t5_small_gec")
 PARAPHRASING_MODEL_PATH = Path("model/saved_trained_models/paraphraser")
@@ -70,6 +72,11 @@ def compare(request: CompareRequest):
 def analyze(request: AnalyzeRequest):
     corrected = grammar_model.correct(request.text)
     differences = compare_texts(request.text, corrected)
+    differences= grammar_lookup.lookup(
+        original=request.text,
+        corrected=corrected,
+        differences=differences,
+    )
 
     return AnalyzeResponse(
         original=request.text,
