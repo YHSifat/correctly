@@ -1,6 +1,8 @@
 from pathlib import Path
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
 
 from model.inference import GrammarCorrectionModel
 from api.schemas import AnalyzeRequest, AnalyzeResponse, AnalyzeResponse, CompareRequest, CompareResponse, CorrectionRequest, CorrectionResponse, ParaphraseRequest, ParaphraseResponse
@@ -12,6 +14,15 @@ app = FastAPI(
     title="Correctly API",
     version="0.1.0",
 )
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],      # Allows all origins
+    allow_credentials=True,   # Allows cookies and credentials
+    allow_methods=["*"],      # Allows all methods (GET, POST, PUT, DELETE, etc.)
+    allow_headers=["*"],      # Allows all headers
+)
+
 
 grammar_lookup = GrammarLookup()
 
