@@ -990,9 +990,9 @@ class VerbTenseRule(GrammarRule):
 
         
         if result is None:
-                error_type= "Grammatical Changes",
-                explanation= "changes could not be classified.",
-                confidence= 70.0,
+                error_type= "Grammatical Changes"
+                explanation= "changes could not be classified."
+                confidence= .70
         else:
             error_type, explanation, confidence = result    
 
