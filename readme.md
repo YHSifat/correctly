@@ -45,9 +45,11 @@ Grammar Rule Lookup Engine
 Grammar Explanation + Confidence
     ↓
 Frontend
+```
 
 ## How to run:
 
+```
 Frontend:
 
 - cd frontend
