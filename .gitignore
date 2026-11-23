@@ -2,3 +2,4 @@
 .venv
 node_modules
 saved_trained_models
+*.pdf
